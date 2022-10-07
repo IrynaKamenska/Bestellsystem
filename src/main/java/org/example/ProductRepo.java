@@ -11,10 +11,8 @@ public class ProductRepo {
         this.products = products;
     }
 
-    public void getProductlist(HashMap<String, Product> products){
-        for (Map.Entry<String, Product> entry : products.entrySet()) {
-            System.out.println("List of products: " + entry.getKey() + " " + entry.getValue());
-        }
+    public HashMap<String, Product> getProductlist(){
+        return products;
     }
 
     public Product getProductById(int id){
@@ -27,4 +25,18 @@ public class ProductRepo {
         throw new RuntimeException("Produkt mit id: " + id + " wurde nicht gefunden");
     }
 
+//    @Override
+//    public String toString() {
+//        return "ProductRepo{" +
+//                "products=" + products +
+//                '}';
+//    }
+@Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (Product product : products.values()) {
+            sb.append(product.toString() + "\n");
+        }
+        return sb.toString();
+    }
 }

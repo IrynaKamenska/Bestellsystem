@@ -1,19 +1,30 @@
 package org.example;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.HashMap;
 
-public class Main {
-    public static void main(String[] args) {
+class ProductRepoTest {
+
+    @Test
+    void getProductlistTest() {
+        //given
         Product product1 = new Product(1, "mehl");
-        Product product2= new Product(2, "zucker");
+        Product product2 = new Product(2, "zucker");
 
         HashMap<String, Product> map = new HashMap<>();
         map.put("001A", product1);
         map.put("002B", product2);
+
+        //when
         ProductRepo productRepo = new ProductRepo(map);
-        System.out.println(productRepo);
-        System.out.println(productRepo.getProductlist());
-        System.out.println(productRepo.getProductById(2));
+
+
+        //then
+    }
+
+    @Test
+    void getProductById() {
 
     }
 }
