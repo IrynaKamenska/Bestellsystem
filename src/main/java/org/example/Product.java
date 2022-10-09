@@ -1,12 +1,14 @@
 package org.example;
 
+import java.util.Objects;
+
 public class Product {
     private int id;
-    private String product;
+    private String name;
 
-    public Product(int id, String product) {
+    public Product(int id, String name) {
         this.id = id;
-        this.product = product;
+        this.name = name;
     }
 
     public int getId() {
@@ -17,19 +19,31 @@ public class Product {
         this.id = id;
     }
 
-    public String getProduct() {
-        return product;
+    public String getName() {
+        return name;
     }
 
-    public void setProduct(String product) {
-        this.product = product;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Product product1 = (Product) o;
+        return id == product1.id && Objects.equals(name, product1.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", product='" + product + '\'' +
-                '}';
+                ", product='" + name + '\'' + "}";
     }
 }

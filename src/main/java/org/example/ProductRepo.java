@@ -1,37 +1,35 @@
 package org.example;
 
 import java.util.HashMap;
-import java.util.Map;
 
 public class ProductRepo {
-//    private List<Product> products;
-    private HashMap<String, Product> products;
+    private HashMap<Integer, Product> products;
 
-    public ProductRepo(HashMap<String, Product> products) {
+    public ProductRepo(HashMap<Integer, Product> products) {
         this.products = products;
     }
 
-    public HashMap<String, Product> getProductlist(){
+    public HashMap<Integer, Product> getProductlist() {
         return products;
     }
 
-    public Product getProductById(int id){
-        for (Map.Entry<String, Product> entry : products.entrySet()) {
-            int productId = entry.getValue().getId();
-            if (id == productId) {
-                return entry.getValue();
-            }
+    public Product getProductById(int id) {
+        Product found = this.products.get(id);
+        if (found == null) {
+            throw new RuntimeException("Produkt mit id: " + id + " wurde nicht gefunden");
         }
-        throw new RuntimeException("Produkt mit id: " + id + " wurde nicht gefunden");
+        return found;
+
+//        for (Map.Entry<String, Product> entry : products.entrySet()) {
+//            int productId = entry.getValue().getId();
+//            if (id == productId) {
+//                return entry.getValue();
+//            }
+//        }
+//
     }
 
-//    @Override
-//    public String toString() {
-//        return "ProductRepo{" +
-//                "products=" + products +
-//                '}';
-//    }
-@Override
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (Product product : products.values()) {
